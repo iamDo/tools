@@ -1,0 +1,21 @@
+#!/bin/sh
+
+case $1 in
+        add*)
+                echo "$2" >> ~/todo
+                ;;
+        show*)
+                if [ "$2" = all ]; then
+                        nl ~/todo
+                else
+                        echo $(sed -n "$2"p ~/todo)
+                fi
+                ;;
+        del*)
+                sed -i".old" "$2"d ~/todo
+                ;;
+        *)
+                echo "Invalid command"
+                exit -1
+                ;;
+esac
