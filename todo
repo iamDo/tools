@@ -5,7 +5,7 @@ case $1 in
                 echo "$2" >> ~/todo
                 ;;
         show*)
-                if [ "$2" = all ]; then
+                if [ "$2" = all -o -z "$2" ]; then
                         nl ~/todo
                 else
                         echo $(sed -n "$2"p ~/todo)
@@ -13,6 +13,7 @@ case $1 in
                 ;;
         del*)
                 sed -i".old" "$2"d ~/todo
+                rm ~/todo.old
                 ;;
         *)
                 echo "Invalid command"
