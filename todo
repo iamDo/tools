@@ -1,17 +1,17 @@
 #!/bin/sh
 
 case $1 in
-        add*)
+        a*|add*)
                 echo "$2" >> ~/todo
                 ;;
-        show*)
+        s*|show*)
                 if [ "$2" = all -o -z "$2" ]; then
                         nl ~/todo
                 else
                         echo $(sed -n "$2"p ~/todo)
                 fi
                 ;;
-        del*)
+        d*|del*)
                 sed -i".old" "$2"d ~/todo
                 rm ~/todo.old
                 ;;
