@@ -1,0 +1,2 @@
+#!/bin/bash
+ls "$1.md" | entr pandoc "$1.md" --pdf-engine=pdfroff -o "$1".pdf
