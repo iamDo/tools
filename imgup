@@ -1,0 +1,5 @@
+#!/bin/sh
+filename=$(basename $1)
+scp $1 pieter@home:/var/www/img.systemdo.eu/$filename
+echo "http://img.systemdo.eu/$filename"
+echo -n "http://img.systemdo.eu/$filename" | xclip -sel clip
